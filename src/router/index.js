@@ -1,20 +1,23 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import NewHello from '@/components/NewHello'
+import VueResource from 'vue-resource'
 
 Vue.use(Router)
-// 定义路由
+Vue.use(VueResource)
+
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }, {
       path: '/HelloWorld',
       name: 'HelloWorld',
       component: NewHello
+    }, {
+      path: '/',
+      component: resolve => require(['../pages/index'], resolve),
+      meta: {
+        title: 'home'
+      }
     }
   ]
 })
